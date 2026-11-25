@@ -34,10 +34,6 @@ The full catalogue is now split into focused references. Use the [identifier ind
 
 [Open comment heuristics](principles/comments.md).
 
-## Java-specific heuristics
-
-[Open java-specific heuristics](principles/java.md).
-
 ## Naming heuristics
 
 [Open naming heuristics](principles/naming.md).
@@ -49,10 +45,6 @@ The full catalogue is now split into focused references. Use the [identifier ind
 ## Repository-specific standards
 
 [Open repository-specific standards](principles/repository.md).
-
-## C# style and safety rules
-
-[Open c# style and safety rules](principles/csharp.md).
 
 ## Additional engineering principles
 

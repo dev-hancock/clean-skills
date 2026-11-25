@@ -1,7 +1,7 @@
 ---
 name: clean-code
-description: 'Implementation quality and correctness guidance for readable, expressive, dependable code. Use for naming, functions, comments, language conventions, C#/.NET, errors, concurrency, reliability, tests, verification and evidence-based code review standards.'
-argument-hint: 'implementation quality, language guidance, testing or verification'
+description: 'Implementation quality and correctness guidance for readable, expressive, dependable code. Use for naming, functions, comments, errors, concurrency, reliability, tests, verification and evidence-based code review standards.'
+argument-hint: 'implementation quality, testing or verification'
 ---
 
 # Clean Code
@@ -19,19 +19,20 @@ Inspect the affected code, contracts and relevant tests. Make names, effects, st
 | Concern | Reference |
 | --- | --- |
 | Naming, functions, comments and layout | [Readability](references/readability.md) |
-| Language-specific standards | [Language registry](references/languages/README.md); for C#, [coding standards](references/languages/csharp/coding-standards.md) |
 | Errors, recovery and dependable contracts | [Reliability](references/reliability.md) |
 | Shared state, cancellation and lifecycle | [Concurrency](references/concurrency.md) |
 | Test design and risk | [Testing](references/testing.md) |
 | Source inspection, build/test evidence and repair | [Verification](references/verification.md) |
 | Implementation smells | [Diagnostics](references/refactoring-smells.md) |
 | Review standards and severity/confidence | [Review standards](references/review-standards.md), [review gates](references/review-gates.md) |
-| Known book heuristic ID | [C](references/principles/comments.md), [E](references/principles/environment.md), [F](references/principles/functions.md), [G1–12](references/principles/general-01-12.md), [G13–24](references/principles/general-13-24.md), [G25–36](references/principles/general-25-36.md), [J (Java only)](references/principles/java.md), [N](references/principles/naming.md), [T](references/principles/testing.md) |
-| Unknown heuristic / repository or engineering rule | [Index](references/principles/index.md), or direct [repository](references/principles/repository.md), [C#](references/principles/csharp.md), [engineering](references/principles/engineering.md) |
-| C# async / disposal / cancellation | [Language safety](references/languages/csharp/dotnet.md); [concurrency](references/concurrency.md) for shared-state risk |
-| C# build/test or coverage risk | [C# verification](references/languages/csharp/verification.md); [coverage analysis](references/languages/csharp/crap-analysis.md) only when relevant |
+| Known book heuristic ID | [C](references/principles/comments.md), [E](references/principles/environment.md), [F](references/principles/functions.md), [G1–12](references/principles/general-01-12.md), [G13–24](references/principles/general-13-24.md), [G25–36](references/principles/general-25-36.md), [N](references/principles/naming.md), [T](references/principles/testing.md) |
+| Unknown heuristic / repository or engineering rule | [Index](references/principles/index.md), or direct [repository](references/principles/repository.md), [engineering](references/principles/engineering.md) |
 
-Load only the applicable language guide and references. The 66-heuristic catalogue is not a mandatory full audit; when the ID is known, open its shard directly. For C# use the existing repository's build/test commands and optional verification scripts when appropriate.
+The heuristic catalogue is not a mandatory full audit; when the ID is known, open its reference directly.
+
+## Language and platform expertise
+
+Determine the language and runtime from scoped source and project configuration. Select an applicable installed language skill independently when language-specific semantics, conventions or tooling matter. Do not load every language skill, require a language registry, or apply another language's rules. If no matching skill is installed, use the actual repository conventions and verified platform knowledge; disclose only material limitations. Language skills specialise this guidance; they do not define a separate delivery or review process.
 
 ## Boundaries
 

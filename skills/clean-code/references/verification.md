@@ -19,7 +19,7 @@ For substantial planning, implementation, architectural assessment or review, pr
 
 ## Before running tools
 
-1. Use the applicable [language guide](languages/README.md) and established tooling findings; inspect missing or changed manifests, runtime requirements, test configuration and documented CI commands.
+1. Use the applicable language or platform skill, if available, and established tooling findings; inspect missing or changed manifests, runtime requirements, test configuration and documented CI commands.
 2. Choose the smallest meaningful test/build/type/lint target and its infrastructure prerequisites; combine related selectors in one run when practical.
 3. Check working-tree state. Do not overwrite user changes or modify unrelated configuration.
 4. Inspect command effects. In read-only review, do not run commands that write files/caches or mutate external state unless explicitly authorised.
@@ -41,12 +41,12 @@ State exact commands, concise outcomes, test counts where available, skipped che
 
 1. Inspect the repository's runner, collector, report format, filters and approved targets. Obtain authorisation for execution in review mode; use existing artifacts otherwise.
 2. Execute the risk-relevant tests with coverage through the actual runner. Verify discovery, exit status, fresh raw output, source/revision mapping and non-empty production coverage.
-3. Generate reports with the repository's tool, such as ReportGenerator where appropriate. Preserve raw inputs; a successful report command cannot replace a failed test run or supply missing complexity/branch data.
+3. Generate reports with the repository's configured reporting tool. Preserve raw inputs; a successful report command cannot replace a failed test run or supply missing complexity/branch data.
 4. Review changed-method hotspots against comparable baseline complexity and meaningful line/branch evidence. Apply [CRAP analysis](testing.md#crap-analysis) only when the required method inputs exist.
 5. Use the [Coverage Risk Gate](review-gates.md#coverage-risk-gate) and [hotspot template](../../clean-workflow/templates/hotspot-review.md). Record tests added, risky paths, before/after metrics, gate decisions, exceptions and unconfirmed concerns; count each finding once.
 6. Recollect coverage when relevant changes invalidate it or a fresh run is required. Report the exact population and limitations rather than claiming whole-repository coverage from targeted tests or an assembly average.
 
-Use [C# coverage evidence](languages/csharp/crap-analysis.md) when that language is in scope. All projects retain their own test runners, collectors and numeric targets. Untouched legacy debt alone is not a reason to fail a change; unavailable required evidence is unverified, not passing.
+All projects retain their own test runners, collectors and numeric targets. Untouched legacy debt alone is not a reason to fail a change; unavailable required evidence is unverified, not passing.
 
 ## Review and approval
 
@@ -55,4 +55,4 @@ Use [C# coverage evidence](languages/csharp/crap-analysis.md) when that language
 - Obtain the relevant owner decision before breaking a public/persisted/protocol contract, making a consequential unapproved architectural deviation or introducing a migration. Routine local decisions and evidence-based technical corrections follow the active command's authority; do not reopen an approved design without contradictory evidence. A standards update does not authorise retroactive cleanup outside the requested scope.
 - Record deliberate exceptions with their scope and rationale. Disclose missing evidence, baseline failures and unresolved conflicts; do not weaken the approved rule to describe an unverified result as compliant.
 
-Platform commands and optional verification scripts belong to the selected language guide, not the language-agnostic core.
+Platform commands and optional verification scripts belong to the applicable independent language skill, not the language-agnostic core.

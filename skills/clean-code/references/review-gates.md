@@ -32,7 +32,7 @@ Build execution, compatibility, scope protection and truthful reporting are [ope
 
 ## Language style and skill conventions
 
-Load only the matching [language guide](languages/README.md). C# reviews may use the [style and safety rules](principles/csharp.md); they do not impose an application architecture.
+Load only applicable language skills when language-specific semantics or conventions matter. Their rules do not impose an application architecture.
 
 Check whether contracts express their ownership and mutation semantics, and whether meaningful translations preserve their guarantees. Follow applicable repository and language conventions. No particular type shape or implementation technique is itself evidence of good design.
 

@@ -40,6 +40,16 @@ External interaction -> use-case policy -> business policy
                                   external implementation
 ```
 
+### Capability and use-case organisation
+
+- Organise application source around cohesive capabilities, business concepts and use cases rather than technical implementation categories.
+- Keep artefacts that change together near their owning use case.
+- Do not separate related operations solely because they use different request, dispatch or execution mechanisms.
+- Introduce structural hierarchy only where it improves cohesion, ownership or navigation.
+- Technical categorisation is appropriate where it reflects a genuine technical responsibility or architectural boundary.
+- CQRS separates read and write responsibilities; it does not require separate source directories.
+- Respect established repository organisation and naming conventions.
+
 ## Composition and runtime ownership
 
 - Construct and connect concrete mechanisms at an appropriate outer composition boundary. The composition mechanism can know implementation details without giving them authority over policy.

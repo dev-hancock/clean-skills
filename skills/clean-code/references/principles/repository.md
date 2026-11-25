@@ -10,4 +10,4 @@ These are areas to investigate, not pre-existing team policies or book codes. An
 | Architecture decisions | Implementation has drifted from an applicable, accepted architecture decision. | A superseding decision or authorised migration may permit the difference. | Cite the decision and show the actual dependency or ownership mismatch. | A domain module imports an adapter contrary to the repository's dependency rule. |
 | Required verification | A required repository verification or quality check is missing or failing. | A check may not apply to the changed scope, or may have an approved waiver. | Cite the requirement and actual result, or explicitly state it was not run. | A mandatory contract test has no recorded execution. |
 
-Use the [language registry](../languages/README.md) to locate bundled standards and inspect repository instructions, configuration and decisions for the controlling policy.
+Select the applicable installed language skill, if needed, and inspect repository instructions, configuration and decisions for the controlling policy.

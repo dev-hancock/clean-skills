@@ -10,6 +10,16 @@ Apply within authorised scope and controlling repository policy. Preserve observ
 
 SOLID principles guide trade-offs together: SRP must not explode into ceremonial classes; OCP protects known change seams rather than fictional plugins; DIP avoids coupling consumers to volatile details without mandating `IFoo` for every `Foo`. Preserve genuine existing architectural ports even when thin.
 
+## Deterministic transformations
+
+Separate substantial transformations from orchestration when doing so makes the main path clearer or gives the transformation a cohesive, independently understandable responsibility. Apply this during initial implementation as well as refactoring.
+
+- Keep simple property projections inline. Prefer a named private function for a small local transformation. When a read model or DTO mapping contains nested object/collection projections and representation conversions, prefer a focused, feature-local concrete mapper over burying that work in the orchestrator. Use a pure function or a static mapping type where the language supports it and no dependencies or instance state are required.
+- Give operations destination-oriented names that describe their meaning. Co-locate the mapper with the feature or boundary owning the target representation; do not introduce a shared mapping layer for one feature or create a mapper per trivial copy.
+- A deterministic mapper should transform inputs into outputs without I/O, hidden mutation, service lookup or unrelated business decisions. Keep eligibility and invariants with their authoritative policy owner; a mapper may apply representation-specific filtering or formatting that is part of the established output contract.
+- Do not add interfaces, DI registrations, factories, base classes, generic mapping infrastructure or a mapping package merely to separate the transformation. Existing justified mapping mechanisms and real dependencies still apply.
+- Preserve the existing target contract and semantics (including unknown values, filtering, order, nulls and failures). Check whether moving the transformation changes dependency direction or where/how a query is evaluated. For representation ownership, see [contracts and translation](../../clean-architecture/references/architecture.md#representation-ownership).
+
 ## Existing capabilities and design justification
 
 Before proposing a new abstraction or implementation mechanism:

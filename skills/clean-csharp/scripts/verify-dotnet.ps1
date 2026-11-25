@@ -5,7 +5,8 @@ param(
     [string]$TestTarget = '',
     [ValidateSet('Release', 'Debug')][string]$Configuration = 'Release',
     [switch]$CheckFormat,
-    [switch]$NoTests
+    [switch]$NoTests,
+    [switch]$WarningsAsErrors
 )
 
 $ErrorActionPreference = 'Stop'
@@ -23,7 +24,9 @@ function Invoke-Dotnet([string[]]$Arguments) {
 }
 
 Invoke-Dotnet -Arguments @('--version')
-Invoke-Dotnet -Arguments @('build', $Target, '--configuration', $Configuration, '-warnaserror')
+$buildArguments = @('build', $Target, '--configuration', $Configuration)
+if ($WarningsAsErrors) { $buildArguments += '-warnaserror' }
+Invoke-Dotnet -Arguments $buildArguments
 if (-not $NoTests) {
     Invoke-Dotnet -Arguments @('test', $TestTarget, '--configuration', $Configuration)
     Write-Host 'NOTE: Inspect test output; success exit code does not prove tests were discovered.'

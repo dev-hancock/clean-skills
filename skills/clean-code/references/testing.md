@@ -23,7 +23,7 @@ Framework selection, fixture infrastructure and detailed integration protocols f
 - Use the test framework and assertion conventions already present. Do not add a new assertion package simply for stylistic consistency.
 - Follow existing test naming conventions; names should describe the circumstance and expected observable outcome.
 - Prefer actual domain objects and small hand-written fakes to mock-heavy internals. Use fixture scope appropriately and avoid incidental shared mutable state.
-- Use the selected [language guide](languages/README.md) for test tooling and controllable time. Avoid real sleeps, external network dependencies in unit tests and nondeterministic ordering.
+- Use the applicable language or platform skill for test tooling and controllable time, when available. Avoid real sleeps, external network dependencies in unit tests and nondeterministic ordering.
 - Assertions should prove the persisted/returned/published outcome or an explicitly guaranteed interaction contract.
 - Check both functional and negative cases; not every method needs every permutation, but each risk-significant invariant should have evidence.
 
@@ -53,5 +53,19 @@ This is a modern risk metric, not a rule defined by Clean Code. State the tool's
 - Prioritise tests for changed high-complexity methods with uncovered meaningful branches, not easy lines that merely raise an average. Consider consequence and change frequency alongside the score.
 - Reduce test debt when touching existing code: add behavioural/failure-path evidence and simplify logic where practical. Do not demand cleanup of unrelated historical debt.
 - Verify observable outcomes; execution alone cannot establish assertion quality. A low score does not waive tests for an important invariant or boundary.
-- Use actual repository policy for numeric coverage targets and gates; this skill sets none. The [C# evidence guide](languages/csharp/crap-analysis.md) explains how to interpret existing reports without selecting collection tools.
+- Use actual repository policy for numeric coverage targets and gates; this skill sets none. Use [coverage verification](verification.md#coverage-verification) to establish the evidence without selecting collection tools.
 - Prefer tests, simpler conditions, reduced branching and cohesive extraction. CRAP alone does not justify architectural rewrites or new abstractions.
+
+### Calculation examples
+
+These are illustrative inputs, not executed measurements or acceptance thresholds.
+
+| Method / scenario | Complexity | Coverage | CRAP | Interpretation |
+| --- | --- | --- | --- | --- |
+| Parser before error-path tests | 10 | 50% | 22.5 | Inspect uncovered behaviour. |
+| Formatter before boundary tests | 12 | 40% | 43.104 | Prioritise meaningful additional tests. |
+| Formatter after boundary tests | 12 | 80% | 13.152 | Reduced metric risk does not prove assertion quality. |
+| Simple conversion with no execution evidence | 2 | 0% | 6 | Low complexity does not establish correctness. |
+| Fully exercised branching method | 30 | 100% | 30 | Remaining complexity still merits investigation. |
+
+These examples apply to any language with comparable method-level measurements. Use the [hotspot template](../../clean-workflow/templates/hotspot-review.md) when recording a formal hotspot assessment.

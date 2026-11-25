@@ -1,13 +1,13 @@
 # Review principles index
 
-Use this reviewer reference to investigate technical debt, inconsistencies, design drift, hidden complexity and probable defects. General guidance is language-agnostic; the Java and C# sections are explicitly scoped. Principles support reasoning; they do not establish defects or severity by themselves.
+Use this reviewer reference to investigate technical debt, inconsistencies, design drift, hidden complexity and probable defects. Guidance is language-agnostic. Principles support reasoning; they do not establish defects or severity by themselves.
 
 ## Source and attribution
 
 
 Book identifiers refer to Robert C. Martin, *Clean Code: A Handbook of Agile Software Craftsmanship* (2008), Chapter 17. The [publisher's contents](https://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884) identifies the chapters and heuristic families. The explanations, evidence thresholds, exclusions and examples below are original practical interpretations, not quotations or a replacement for the book.
 
-This catalogue covers all 66 Chapter 17 identifiers with original interpretations, not a reproduction of the chapter or an exhaustive index of every idea/example in the book. Repository and modern engineering entries are explicitly separate and are not assigned book heuristic codes. Language-specific implementation details remain in the [language guides](../languages/README.md).
+This catalogue covers the 63 language-independent Chapter 17 identifiers with original interpretations, not a reproduction of the chapter or an exhaustive index of every idea or example in the book. Language-specific heuristics are excluded. Repository and modern engineering entries are explicitly separate and are not assigned book heuristic codes. Language-specific implementation details belong to independently installed language skills.
 
 ## Identifier coverage and navigation
 
@@ -17,14 +17,12 @@ This catalogue covers all 66 Chapter 17 identifiers with original interpretation
 | Environment | E1-E2 | 2 | [Environment](environment.md) |
 | Functions | F1-F4 | 4 | [Functions](functions.md) |
 | General | G1-G36 | 36 | [G1–G12](general-01-12.md), [G13–G24](general-13-24.md), [G25–G36](general-25-36.md) |
-| Java | J1-J3 | 3 | [Java only](java.md) |
 | Names | N1-N7 | 7 | [Naming](naming.md) |
 | Tests | T1-T9 | 9 | [Tests](testing.md) |
 | Repository policy | Not book codes | 3 | [Repository](repository.md) |
-| C# | CSHARP-* | 5 | [C#](csharp.md) |
 | Engineering | Not book codes | 5 | [Engineering](engineering.md) |
 
-Use the identifiers as stable lookup keys, not as a requirement to apply all 66 to every review. CSHARP-* rules and additional engineering principles are outside this book-identifier inventory. If a family or ID is known, go directly to its reference without reading this index. Otherwise scan the lookup below and open only matching references. The lookup is not sufficient evidence: read the entry with applicability, exclusions and evidence threshold before citing it.
+Use the identifiers as stable lookup keys, not as a requirement to apply every principle to every review. Language-specific review identifiers and additional engineering principles are outside this book-identifier inventory. If a family or ID is known, go directly to its reference without reading this index. Otherwise scan the lookup below and open only matching references. The lookup is not sufficient evidence: read the entry with applicability, exclusions and evidence threshold before citing it.
 
 ## How to use
 
@@ -35,7 +33,7 @@ Use the identifiers as stable lookup keys, not as a requirement to apply all 66 
 4. Account for accepted trade-offs, documented exceptions, compatibility and the cost of the proposed remedy.
 5. In the report's **Principles** field, cite the code/concept with a short topic, or the exact repository rule and source. Keep detailed definitions here; put instance-specific evidence, impact and remedy in the report.
 6. Assign severity from impact and confidence from evidence, using the [review standards](../review-standards.md#severity-and-confidence). A static observation can be certain while its predicted runtime consequence remains unconfirmed.
-7. Check the identifier's meaning and family before citing it. Do not invent missing numbers, assign new meanings to existing identifiers or cite Java-only guidance for another language.
+7. Check the identifier's meaning and family before citing it. Do not invent missing numbers or assign new meanings to existing identifiers.
 8. Use the smallest set of principles that explains a finding. Overlapping entries are alternative reasoning aids, not separate defects to count repeatedly.
 9. Treat book-era advice as context-sensitive guidance. Repository contracts, language semantics and accepted decisions can provide counter-evidence; never mandate new abstractions, wildcard imports or API breaks merely to match a heuristic.
 
@@ -90,9 +88,6 @@ Use the identifiers as stable lookup keys, not as a requirement to apply all 66 
 | G34 | A function descends through several abstraction levels at once. | [general-25-36](general-25-36.md) |
 | G35 | Configurable policy should be selected by an appropriate high-level owner and supplied to lower-level work. | [general-25-36](general-25-36.md) |
 | G36 | Consumers navigate through collaborators' internals. | [general-25-36](general-25-36.md) |
-| J1 | Java import-list verbosity involves a trade-off between package-wide imports and explicitly named dependencies. | [java](java.md) |
-| J2 | A Java type should not acquire an inheritance relationship solely to gain access to constants. | [java](java.md) |
-| J3 | Java enumerations can model a closed set of named alternatives more safely than unrelated primitive constants. | [java](java.md) |
 | N1 | Names should describe the actual concept or operation. | [naming](naming.md) |
 | N2 | Names should match the abstraction exposed to callers. | [naming](naming.md) |
 | N3 | Established domain or technical vocabulary aids understanding. | [naming](naming.md) |
@@ -117,5 +112,5 @@ Use the identifiers as stable lookup keys, not as a requirement to apply all 66 
 
 - Add a principle only when it resolves a recurring review decision. Keep meaning, applicability, exclusions, evidence threshold and an original example together.
 - Preserve book identifiers; do not attach a new meaning to an existing code. Separate any unverified attribution from established catalogue entries.
-- Keep repository policy at its authoritative source and language-specific prescriptions in language guides.
+- Keep repository policy at its authoritative source and language-specific prescriptions in independent language skills.
 - Amend an entry when counter-evidence exposes overreach. A report should capture the actual accepted trade-off rather than hiding it behind a rule citation.

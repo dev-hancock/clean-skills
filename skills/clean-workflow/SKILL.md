@@ -34,7 +34,7 @@ Reviews and recovery are read-only unless a separate write is explicitly authori
 
 - Significant boundaries: [architecture](../clean-architecture/references/architecture.md); storage/transaction guarantees: [persistence and consistency](../clean-architecture/references/persistence-and-consistency.md); other concerns: [architecture routing](../clean-architecture/SKILL.md).
 - Implementation design: [design](../clean-design/references/design.md); interfaces and ownership: [abstraction decisions](../clean-design/references/abstraction-decisions.md); smell/technique not known: [design routing](../clean-design/SKILL.md).
-- Code quality: [readability](../clean-code/references/readability.md), [language registry](../clean-code/references/languages/README.md), [review classifications](../clean-code/references/review-standards.md), [verification](../clean-code/references/verification.md); other concerns: [code routing](../clean-code/SKILL.md).
+- Code quality: [readability](../clean-code/references/readability.md), applicable installed language skills, [review classifications](../clean-code/references/review-standards.md), [verification](../clean-code/references/verification.md); other concerns: [code routing](../clean-code/SKILL.md).
 
 Load only the relevant concern, not all skills or catalogues at each stage. Reuse still-valid evidence; recheck changes and invalidated assumptions. Report genuine blockers, unrun checks and outstanding decisions. If companion guidance is unavailable, follow repository policy and disclose material gaps; do not manufacture rules or claim compliance.
 

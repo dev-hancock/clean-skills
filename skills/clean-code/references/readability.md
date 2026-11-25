@@ -5,7 +5,7 @@
 - Use vocabulary from the domain and existing ubiquitous language. One concept gets one name; different concepts get different names. Distinguish `messageId`, `claimId` and `correlationId` rather than `id` in ambiguous scopes.
 - Name operations for their **observable** behaviour. `Get` should not persist, publish or mutate; `TryClaim` should specify failure semantics; `Calculate` shouldn't do IO.
 - Prefer pronounceable, searchable, non-misleading words. Avoid anonymous numbers, generic `data`, `thing`, `manager`, `utils`, `temp`, and near-synonyms with no meaningful distinction.
-- Add only disambiguating context; avoid repeatedly encoding the same context in a name. Follow the selected language guide and repository naming conventions.
+- Add only disambiguating context; avoid repeatedly encoding the same context in a name. Follow applicable language and repository naming conventions.
 - Avoid encoding type or scope into names. A `List<T>` might later become a collection; avoid naming it `customerList` unless list semantics matter.
 - Choose positive and domain-accurate predicates (`CanRetry`); don't invert twice (`!isNotAvailable`). Never misrepresent a costly query as a cheap property.
 - Public APIs should expose stable intent, not transport framing or transient implementation details.
@@ -20,6 +20,14 @@
 - Use enums/domain types for boolean flags selecting independently named operations, but don't ban every boolean: `includeArchived` can be legitimate when the meaning is obvious.
 - Keep branch cases exhaustive where correctness requires it. Pattern-matching or polymorphism is a means, not a requirement.
 - Avoid magic domain limits, units and time values. Use named concepts/units where mixing them would be harmful; don't wrap `0` or `1` without a reason.
+
+## Expression complexity and abstraction levels
+
+- Keep the main path of an orchestrating function at a consistent level of abstraction: name retrieval, decisions, effects and substantial transformations rather than exposing every detail inline.
+- During initial implementation, extract a meaningful transformation when a selector or expression combines nested projections, object construction, filtering and branching or representation conversion. Prefer a readable named operation and meaningful intermediate values to a dense expression.
+- A query handler should make selection/retrieval and result transformation apparent. Keep a trivial projection inline; separate substantial projection details from the handler. A private function is sufficient for a small local transformation; use [abstraction decisions](../../clean-design/references/abstraction-decisions.md#deterministic-transformations) when the transformation warrants its own owner.
+- Do not optimise for minimum lines, arbitrary nesting limits or maximum method count. Extract only operations that communicate a real concept; preserve straightforward local control flow and avoid pass-through helpers.
+- Preserve evaluation order, short-circuiting, effects, failure behaviour and collection semantics when restructuring existing expressions. Use the applicable language skill for idiomatic techniques and runtime-specific risks.
 
 ## Duplication
 

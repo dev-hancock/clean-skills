@@ -36,6 +36,13 @@ Chapter 11 discusses system construction, dependency injection, cross-cutting co
 
 These are language-independent design considerations, not requirements to adopt a particular representation or translation mechanism.
 
+## Representation ownership
+
+- Retain meaningful types (such as enums and value objects) in internal contracts when their semantics are useful to consumers and the dependencies are appropriate. Do not convert to primitives solely for eventual presentation or serialization. Equally, do not force internal domain types into public contracts or across boundaries that require independent representations.
+- The owner of an external contract decides its wire names, formatting, serialization and compatibility rules. Application read models should not acquire incidental transport formatting merely because one consumer uses it. Existing application contracts may intentionally carry representation values; inspect actual consumers and approved decisions first.
+- Where a boundary requires translation, place it with the owner of that representation. Preserve stable enum tokens, unknown-value handling, nullability, field names and other observable semantics. A mapper extraction is not permission to change a read model, API, protocol or persistence contract.
+- Consider a typed internal read model and explicit external conversion when designing new contracts or when contract changes are authorised and justified. Verify compatibility for all affected consumers and serializers; do not assume default serialization preserves existing wire values.
+
 ## Scope and compatibility safeguards
 
 - Preserve public and externally consumed contracts unless the task intentionally changes them.
