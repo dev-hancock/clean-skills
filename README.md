@@ -266,3 +266,9 @@ Product documentation checked 24 November 2026:
 - [VS Code agent harnesses](https://code.visualstudio.com/docs/agents/run/agent-harnesses), [agent configuration](https://code.visualstudio.com/docs/agents/reference/custom-agent-file-reference), [migration](https://code.visualstudio.com/docs/agent-customization/migrate-customizations) and [subagents](https://code.visualstudio.com/docs/agents/run/subagents)
 - [Visual Studio release notes](https://learn.microsoft.com/en-us/visualstudio/releases/2026/release-notes), [agent skills](https://learn.microsoft.com/en-us/visualstudio/ide/copilot-agent-skills) and [Copilot feature comparison](https://docs.github.com/en/copilot/reference/customization-cheat-sheet)
 - [Custom agent configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration) and [Copilot Fusion](https://docs.github.com/en/copilot/concepts/models/copilot-fusion)
+
+
+Copyright (C) 2026 Adam Hancock <wtfpl@dev-hancock.co.uk>
+
+Licensed under the WTFPL, Version 2.
+See the LICENSE file for details.
