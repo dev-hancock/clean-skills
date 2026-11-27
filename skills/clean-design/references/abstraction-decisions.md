@@ -22,7 +22,11 @@ Separate substantial transformations from orchestration when doing so makes the 
 
 ## Existing capabilities and design justification
 
-Before proposing a new abstraction or implementation mechanism:
+Start with the simplest implementation that satisfies established requirements and approved architectural boundaries.
+
+Do not introduce defensive mechanisms, stronger guarantees, abstractions or supporting infrastructure without an identifiable requirement, invariant, ownership concern or credible failure mode. Distinguish required correctness guarantees from merely desirable properties.
+
+Before proposing additional implementation complexity:
 
 - Examine relevant language, platform, framework, library and codebase capabilities, contracts and guarantees using source, documentation and tests as needed.
 - Compare those capabilities with the required behaviour, including relevant failure, lifecycle and operational semantics. Established behaviour is not automatically sufficient; verify it against the actual requirements.
@@ -60,6 +64,8 @@ A new mechanism must demonstrate a meaningful engineering benefit; abstraction, 
 - DTO property-copy adapters map identical structures without a real boundary.
 - An abstraction hides concrete dependencies, increases consumer navigation or creates circular ownership.
 - Artificial numeric limits (class size, constructor parameter count, interface count) replace reasoning about cohesion.
+- Defensive mechanisms enforce guarantees stronger than consumers require, without evidence of an ownership, mutation, lifecycle or correctness risk.
+- Simple data representations acquire custom construction, validation, encapsulation or supporting infrastructure despite owning no corresponding behaviour or invariants.
 
 ## Assess the resulting structure
 

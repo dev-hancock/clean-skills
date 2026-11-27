@@ -58,8 +58,11 @@ Fallback order when no repository convention applies:
 
 ## Type choice and immutability
 
-- Prefer immutable DTOs and contracts. Use records, classes or structs according to equality, identity, copying and consumer requirements, not a mandatory role-to-type table.
-- Use `init`, `readonly` and constructor initialisation where appropriate. A record does not by itself make a referenced mutable collection immutable.
+- Prefer simple positional records for read models, DTOs and other data representations that own no behaviour or invariants. Choose records, classes or structs according to equality, identity, copying and consumer requirements.
+- Use `init`, `readonly` and constructor initialisation where appropriate. Require immutability only to the extent justified by the contract, ownership and consumer requirements.
+- Do not introduce custom constructors, accessors, backing fields, validation or defensive copying without an identifiable requirement or correctness risk.
+- Preserve meaningful enum and value object types within internal contracts where dependency boundaries permit. Do not convert them to primitives merely for convenient serialisation.
+- Introduce distinct summary and detail representations when consumers require different information. Do not create speculative representations or force unrelated use cases to share a model.
 - Make conversions explicit when implicit conversion would hide validation, information loss or surprising semantics.
 - Seal classes by default unless they are designed for inheritance; preserve intentional framework and public extension points.
 - Prefer the narrowest appropriate accessibility. Constructors and transitions must preserve required state and invariants.
@@ -94,13 +97,17 @@ Fallback order when no repository convention applies:
 - Keep mapping deterministic and free of I/O, hidden state or unrelated domain decisions. Do not introduce DI or interfaces for a dependency-free transformation. Reuse established mapping capabilities where appropriate. See [deterministic transformations](../../clean-design/references/abstraction-decisions.md#deterministic-transformations).
 - Distinguish LINQ to Objects from `IQueryable<T>` and expression trees. Do not replace provider-translated projections with arbitrary mapping methods or force client-side execution/materialisation merely for style. Keep server-side filtering, projection and limits where required; verify provider translation and query shape when changed.
 - Preserve filtering, ordering, null and unknown-value handling, evaluation order and snapshot/materialisation semantics. Keep the existing read model and external representation unless contract changes are authorised. See [projection examples](examples.md#separate-substantial-projections-from-orchestration).
+- Materialise collections at the appropriate ownership boundary. Avoid repeated materialisation or defensive copying across the mapper, read model and consumer unless each operation provides a distinct required guarantee.
+- Keep destination models proportionate to their purpose. Do not turn simple query results into invariant-enforcing domain objects.
 
 ## API collections
 
-- Accept the least demanding appropriate abstraction, including `IEnumerable<T>`, `IReadOnlyList<T>` and `IReadOnlyDictionary<TKey, TValue>`.
-- Return read-only collections and avoid exposing mutable backing collections.
-- Select the abstraction for actual consumer requirements; a read-only interface alone does not freeze externally shared mutable state.
-
+- Select collection types according to actual consumer requirements, including enumeration, indexing, lookup, ownership and mutation semantics.
+- Prefer read-only collection interfaces for consumers that do not require mutation. `IReadOnlyList<T>` and `IReadOnlyDictionary<TKey, TValue>` restrict access through the interface; they do not guarantee immutability.
+- Distinguish exposing an owner's mutable internal state from returning a newly materialised collection whose ownership is transferred to the consumer.
+- When a mapper materialises a fresh collection and transfers ownership, do not defensively copy it again without an identifiable ownership, mutation or concurrency risk.
+- Use defensive copies, read-only wrappers or immutable collections when required by actual ownership, sharing, lifetime, concurrency or contract guarantees.
+- Prefer existing collection capabilities over custom collection-copying helpers or abstractions.
 - LINQ queries may be deferred. Avoid unintended repeated enumeration, repeated side effects, or executing a query after its resource owner has been disposed. Materialise only where snapshot semantics, ownership or repeated enumeration require it.
 - Choose ordinal or culture-aware string comparison according to the meaning of the text; identifiers and protocol tokens are not natural-language display strings.
 
@@ -109,6 +116,10 @@ Fallback order when no repository convention applies:
 Follow the repository's public-API documentation policy. Document non-obvious contractual information that cannot be inferred reliably from names and types, particularly constraints, units, effects, failure and cancellation semantics. Keep existing public documentation accurate when contracts change.
 
 Avoid comments that merely paraphrase the declaration. Do not generate boilerplate XML documentation for every public symbol unless the repository explicitly requires it.
+
+Establish the actual meaning of a type, member or operation from its authoritative contracts, implementation and domain semantics before documenting it. Do not infer behaviour solely from its name. Distinguish current state from historical events, capability from availability, and observed state from verified outcomes.
+
+When semantics are uncertain, investigate rather than inventing a plausible description.
 
 ## Related owners
 
