@@ -95,12 +95,28 @@ Preserve ID uniqueness and references. Do not add an all-items index or routine 
 
 Use execution capability only for necessary coordination, delivery bookkeeping and safe local file moves, not specialist builds, installs or deployment.
 
-## Completion
+## Execution limits and completion
 
-Prefer one bounded delegation and one recheck of changed findings over exhaustive repeated reviews.
+Deliver the authorised objective using the fewest necessary
+handoffs. Do not expand the task merely because further
+improvements are possible.
 
-Consolidate specialist findings without repeating their investigation. Distinguish verified evidence, recommendations, unresolved decisions and blockers.
+- Define the completion conditions from the requested scope and approved requirements.
+- Delegate cohesive implementation increments rather than individual implementation decisions.
+- Engineer owns routine implementation and local design decisions within approved boundaries.
+- Return to Architect only for material architectural decisions, invalidated assumptions or consequential contract changes.
+- Correct defects discovered during implementation within the existing authorised scope. Do not initiate a new planning lifecycle for each correction.
+- Review a defined changeset and its affected guarantees, not the entire application. 
+- Reuse valid review and verification evidence. Reopen a passed scope only when a relevant change or concrete new defect invalidates that evidence.
+- Allow one focused correction and recheck cycle by default. If material blockers remain, report them and stop rather than initiate another unrestricted review cycle.
+- Non-blocking improvements do not prevent completion. Report them separately without automatically scheduling
+  further work.
+- Missing optional guidance is not a blocker. Perform at most one targeted discovery attempt before proceeding with available authoritative policy.
+- Parallel writers must have isolated worktrees or exclusive ownership of non-overlapping files. Suspend conflicting work rather than repeatedly reconcile concurrent edits.
+- Perform final verification against a stable source tree.
 
-Report actual specialist invocations, material findings and verification outcomes concisely.
+When the authorised objective is satisfied and required verification is complete, report the evidence and terminate.
 
-Do not claim work was delegated, independently reviewed or verified without evidence.
+When required verification or a material decision remains blocked, report the limitation and terminate without claiming completion.
+
+Do not initiate additional investigations, reviews, refactoring or work items after either termination condition.

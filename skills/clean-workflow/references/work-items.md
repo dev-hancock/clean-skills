@@ -36,4 +36,15 @@ The default templates live at `../templates/work-items/plan.md` and `../template
 
 ## Review boundaries
 
-Architect challenges Analyst specification; Engineer challenges Architect work-item; QA challenges Engineer implementation. Findings require evidence and consequence, not role-play output or mandatory lists. Fixes return to the owning agent and are reassessed for affected risk. Owner approves business outcomes, not agent role-play. Small fixes may skip formal stages with scoped verification.
+Use independent review where it establishes meaningful confidence in an agreed outcome.
+
+- Review cohesive implementation increments against their acceptance criteria and affected guarantees.
+- Independently challenge significant architectural designs and uncertain requirements. Do not require architectural approval for ordinary implementation decisions.
+- Correct defects within the current authorised work item. Do not create separate work items for every defect, failed test or design refinement discovered during delivery.
+- A completed work item's historical record remains frozen. This does not prohibit correcting an implementation defect within another currently authorised scope.
+- Distinguish blocking findings from non-blocking improvements. Severity alone does not establish release-blocking impact; relate the finding to the agreed completion conditions.
+- Recheck corrections and affected regression risks without repeating the entire review.
+- Do not reopen previously accepted decisions or passed scopes without concrete new evidence or relevant changes.
+- Follow the orchestrator's termination conditions. Do not independently initiate another delivery cycle.
+
+Owner approval governs product outcomes and consequential decisions, not routine engineering choices.
